@@ -167,184 +167,10 @@ void updateGame() {
     glutPostRedisplay();
     */
 }
-//int frame=0,time,timebase=0;
-
-/*
-void displayGame() {
-    
-//    frame++;
-//    time=glutGet(GLUT_ELAPSED_TIME);
-//    if (time - timebase > 1000) {
-//        printf("FPS:%4.2f\n",
-//        frame*1000.0/(time-timebase));
-//        timebase = time;
-//        frame = 0;
-//    }
-    
-    
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    //glClear(GL_COLOR_BUFFER_BIT);
-    
-    glColor3d(0.0, 0.0, 0.0);
-
-    glBegin(GL_LINE_STRIP);
-        glVertex2f(-0.99, -0.99);
-        glVertex2f(-0.99, 0.99);
-        glVertex2f(0.99, 0.99);
-        glVertex2f(0.99, -0.99);
-        glVertex2f(-0.99, -0.99);
-    glEnd();
-    
-    glPushMatrix();
-
-    glTranslatef(0.0, bat.position, 0.0);
-    
-    glBegin(GL_LINE_STRIP);
-        glVertex2f(bat.left_buttom.x   , bat.left_buttom.y);
-        glVertex2f(bat.left_top.x      , bat.left_top.y);
-        glVertex2f(bat.right_top.x     , bat.right_top.y);
-        glVertex2f(bat.right_buttom.x  , bat.right_buttom.y);
-        glVertex2f(bat.left_buttom.x   , bat.left_buttom.y);
-    glEnd();
-
-    glPopMatrix();
-    
-
-    // Draw ball
-    
-    glColor3d(1.0, 0.0, 0.0);
-    
-    glBegin(GL_LINE_STRIP);
-        glVertex2f(bat.right_top.x  , (bat.right_top.y + bat.position));
-        glVertex2f(bat.right_top.x  , (bat.right_buttom.y + bat.position));
-    glEnd();
-
-    //glColor3d(1.0, 1.0, 1.0);
-
-    //glPushMatrix();
-
-    // to make right circle not ellipse on window not 1:1 proportion
-    int window_width = glutGet(GLUT_WINDOW_WIDTH);
-    int window_height = glutGet(GLUT_WINDOW_HEIGHT);
-    //glScalef((float)window_height/window_width, 1.0, 0.0);
-
-    //glTranslatef(gameBall.x, gameBall.y, 0.0);
-    //glBegin(GL_POLYGON);
-    int point;
-    //for(point = 0; point < CIRCLE_POINTS; point++) {
-        //glVertex2f(gameBall.points[point].x-gameBall.step_x, gameBall.points[point].y-gameBall.step_y);
-    //}
-    //glEnd();
-    
-    
-    //glPopMatrix();
-
-    glColor3d(1.0, 1.0, 1.0);
-    
-    glPushMatrix();
-
-    // to make right circle not ellipse on window not 1:1 proportion
-    glScalef((float)window_height/window_width, 1.0, 0.0);
-
-    glTranslatef(gameBall.x, gameBall.y, 0.0);
-    glBegin(GL_POLYGON);
-    for(point = 0; point < CIRCLE_POINTS; point++) {
-        glVertex2f(gameBall.points[point].x, gameBall.points[point].y);
-    }
-    glEnd();
-    
-    
-    glPopMatrix();
-    
-    drawScore();
-    drawLives();
-    
-    glutSwapBuffers();
-}
-*/
-
-/*
-int screen = 0;
-void displayGame() {
-    gameBall.y += gameBall.step_y;
-    glClear(GL_COLOR_BUFFER_BIT);
-    glPushMatrix();
-    glTranslatef(0.5, gameBall.y, 0.0);
-    glBegin(GL_POLYGON);
-    int point;
-    for(point = 0; point < CIRCLE_POINTS; point++) {
-        glVertex2f(gameBall.points[point].x, gameBall.points[point].y);
-        //printf("%f\n", gameBall.points[point].y);
-    }
-    glEnd();
-    glPopMatrix();
-
-    glutSwapBuffers();
-}
-
-int timeout = 300;
-*/
-
-/*
-void keyboard(unsigned char key, int x, int y) {
-    switch(key) {
-        case 'q':
-            if((bat.position + bat.step + bat.left_top.y) <= 0.98) {
-                bat.position += bat.step;
-            } else if ((bat.position + 0.01 + bat.left_top.y) < 0.98) {
-                bat.position += 0.01;
-            }
-            break;
-        case 'a':
-            if((bat.position - bat.step) >= -0.98) {
-                bat.position -= bat.step;
-            } else if ((bat.position - 0.01) > -0.98) {
-                bat.position -= 0.01;
-            }
-            break;
-        case 27:
-            glutLeaveMainLoop();
-            break;
-        case 'w':
-            timeout += 5;
-            printf("timeout: %d\n", timeout);
-            break;
-        case 'e':
-            if(timeout >= 5) {
-                timeout -= 5;
-                printf("timeout: %d\n", timeout);
-            }
-            break;
-        case 's':
-            if(gameBall.step_y > 0) {
-                gameBall.step_y += 0.01;
-            } else {
-                gameBall.step_y -= 0.01;
-            }
-            printf(" gameBall.step_y: %f\n",  gameBall.step_y);
-            break;
-        case 'd':
-            if(gameBall.step_y > 0) {
-                gameBall.step_y -= 0.01;
-            } else {
-                gameBall.step_y += 0.01;
-            }
-            printf(" gameBall.step_y: %f\n",  gameBall.step_y);
-            break;
-    }
-}
-*/
 
 void free_resources() {
     
 }
-
-/*
-void gamesteps(int i) {
-    updateGame();
-    glutTimerFunc(timeout, gamesteps, 0);
-}
-*/
 
 float batPlace = 0.0f;
 
@@ -508,8 +334,6 @@ int main(int argc, char** argv) {
     /*************************************************************************/
     
     /*
-    glutKeyboardFunc(keyboard);
-            
     // Fill ball array
     const float angle = 2.1 * 3.1416 / CIRCLE_POINTS;
     float drawAngle = 0.0;
@@ -519,21 +343,5 @@ int main(int argc, char** argv) {
         gameBall.points[point].y = floor(gameBall.radius * sin(drawAngle) * 100) / 100;
         drawAngle += angle;
     }
-
-    // register callbacks
-    glutDisplayFunc(displayGame);
-    //glutReshapeFunc(updateGame);
-    //glutIdleFunc(updateGame);
-    gamesteps(0);
-    //glutSpecialFunc(keyboard);
-    
-    //glutFullScreen();
-    
-    if(init_resources() == 1) {
-        glutMainLoop();
-    }
-    
-    free_resources();
-    return (EXIT_SUCCESS);
     */
 }
