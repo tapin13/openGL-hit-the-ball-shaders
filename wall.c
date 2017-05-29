@@ -5,7 +5,45 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "common/matrixMath.h"
 #include "wall.h"
+
+
+const float wallPositions[][VERTEX_POINTS] = {
+//    { -1.0f, -1.0f },    // bottom right
+//    { -1.0f, 1.0f },   // top right
+//    { -WALL_POSITION, -1.0f },  // bottom left
+//    { -WALL_POSITION, 1.0f },   // top let
+
+    { WALL_POSITION, -1.0f }    // bottom right
+    , { WALL_POSITION, 1.0f }   // top right
+    , { 1.0f, -1.0f }  // bottom left
+    , { 1.0f, 1.0f }   // top let
+
+    , { -1.0f, 1.0f }    // bottom right
+    , { 1.0f, 1.0f }   // top right
+    , { -1.0f, WALL_POSITION }  // bottom left
+    , { 1.0f, WALL_POSITION }   // top let
+
+    , { -1.0f, -WALL_POSITION }    // bottom right
+    , { 1.0f, -WALL_POSITION }   // top right
+    , { -1.0f, -1.0f }  // bottom left
+    , { 1.0f, -1.0f }   // top let
+};
+
+const unsigned int wallIndexes[] = {
+    0, 1, 2, 
+    1, 2, 3 
+
+    , 4, 5, 6, 
+    5, 6, 7 
+
+    , 8, 9, 10, 
+    9, 10, 11 
+            
+//    ,12, 13, 14, 
+//    13, 14, 15 
+};
 
     // Vertex Buffer Object,  Vertex Array Object
     //  Vertex Array Objects (VAO). 

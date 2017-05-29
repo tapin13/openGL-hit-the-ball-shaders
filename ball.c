@@ -1,4 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include "common/matrixMath.h"
+
 #include "ball.h"
+
+float ballPositions[] = {
+    -S, -S,
+    -S, S,
+    S, -S,
+    S, S
+};
+
+const unsigned int ballIndexes[] = {
+    0, 1, 2,
+    1, 2, 3
+};
 
 float stepX = 0.01;
 float stepY = 0.01;

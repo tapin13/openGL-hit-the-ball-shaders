@@ -1,4 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <string.h>
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include "loadShader.h"
 
 GLuint loadShader(const char *vertex_file_path, const char *fragment_file_path) {
     GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);

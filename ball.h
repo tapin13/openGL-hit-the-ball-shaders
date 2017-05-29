@@ -8,19 +8,16 @@
 #ifndef BALL_H
 #define BALL_H
 
+#define VERTEX_POINTS 2
+
 #define S 0.025
 
-float ballPositions[] = {
-    -S, -S,
-    -S, S,
-    S, -S,
-    S, S
-};
 
-const unsigned int ballIndexes[] = {
-    0, 1, 2,
-    1, 2, 3
-};
+int initBall(GLuint programId, float aspectRatio);
+
+void updateBall(float batPlace);
+
+void renderBall(GLuint programId);
 
 #endif /* BALL_H */
 

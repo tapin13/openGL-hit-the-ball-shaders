@@ -1,4 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include "common/matrixMath.h"
 #include "bat.h"
+
+const float batPositions[][VERTEX_POINTS] = {
+    { -0.97f, -0.1f }    // bottom right
+    , { -0.97f, 0.1f }   // top right
+    , { -0.95f, -0.1f }  // bottom left
+    , { -0.95f, 0.1f }   // top let
+};
+
+const unsigned int batIndexes[] = {
+    0, 1, 2, 
+    1, 2, 3 
+};
 
 int positionBatLocation;
 GLint matrixLocation;

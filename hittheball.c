@@ -10,12 +10,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "common/loadShader.c"
-#include "common/matrixMath.c"
+#include "common/loadShader.h"
+#include "common/matrixMath.h"
 
-#include "wall.c"
-#include "bat.c"
-#include "ball.c"
+#include "wall.h"
+#include "bat.h"
+#include "ball.h"
 
 #define true  1
 #define false 0
@@ -25,6 +25,8 @@
 
 #define CIRCLE_POINTS 12
 #define VERTEX_POINTS 2
+
+GLuint programId;
 
 struct point {
     float x, y;
@@ -257,7 +259,7 @@ int main(int argc, char** argv) {
     
     /*************************************************************************/
     
-    GLuint programId = loadShader("shaders/vertex.sh", "shaders/fragment.sh");
+    programId = loadShader("shaders/vertex.sh", "shaders/fragment.sh");
     if(programId == -1) {
         printf("Error load shaders\n");
         return -1;        

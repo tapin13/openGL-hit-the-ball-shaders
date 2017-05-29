@@ -8,17 +8,12 @@
 #ifndef BAT_H
 #define BAT_H
 
-const float batPositions[][VERTEX_POINTS] = {
-    { -0.97f, -0.1f }    // bottom right
-    , { -0.97f, 0.1f }   // top right
-    , { -0.95f, -0.1f }  // bottom left
-    , { -0.95f, 0.1f }   // top let
-};
+#define VERTEX_POINTS 2
 
-const unsigned int batIndexes[] = {
-    0, 1, 2, 
-    1, 2, 3 
-};
+
+int initBat(GLuint programId);
+
+void drawBat(GLuint programId, float batPlace);
 
 #endif /* BAT_H */
 
