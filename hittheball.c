@@ -13,8 +13,6 @@
 #include "common/loadShader.c"
 #include "common/matrixMath.c"
 
-GLuint programId;
-
 #include "wall.c"
 #include "bat.c"
 #include "ball.c"
@@ -259,17 +257,17 @@ int main(int argc, char** argv) {
     
     /*************************************************************************/
     
-    programId = loadShader("shaders/vertex.sh", "shaders/fragment.sh");
+    GLuint programId = loadShader("shaders/vertex.sh", "shaders/fragment.sh");
     if(programId == -1) {
         printf("Error load shaders\n");
         return -1;        
     }
     
-    initWall();
+    initWall(programId);
     
-    initBat();
+    initBat(programId);
     
-    initBall(aspectRatio);
+    initBall(programId, aspectRatio);
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);    
     
@@ -293,9 +291,9 @@ int main(int argc, char** argv) {
 
         glClear(GL_COLOR_BUFFER_BIT);
         
-        drawWall();
+        drawWall(programId);
         
-        drawBat(batPlace);
+        drawBat(programId, batPlace);
 
         while(deltaTime >= 1.0) {
             updateBall(batPlace);
@@ -304,7 +302,7 @@ int main(int argc, char** argv) {
             deltaTime -= 1.0;
         }
 
-        renderBall();
+        renderBall(programId);
         
         keyboardInput(window);
         

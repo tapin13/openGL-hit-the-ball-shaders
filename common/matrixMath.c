@@ -1,6 +1,5 @@
 #include "math.h"
 
-
 typedef float Matrix4[16];
 
 static void Matrix4Perspective(float *M, float fovy, float aspect, float znear, float zfar) {

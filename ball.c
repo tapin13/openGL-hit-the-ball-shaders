@@ -1,16 +1,4 @@
-#define S 0.025
-
-float ballPositions[] = {
-    -S, -S,
-    -S, S,
-    S, -S,
-    S, S
-};
-
-unsigned int ballIndexes[] = {
-    0, 1, 2,
-    1, 2, 3
-};
+#include "ball.h"
 
 float stepX = 0.01;
 float stepY = 0.01;
@@ -24,7 +12,7 @@ int matrixBallLocation;
 
 Matrix4 ballMVP = {0.0f};
 
-int initBall(float aspectRatio) {
+int initBall(GLuint programId, float aspectRatio) {
     ballPositions[1] *= aspectRatio;
     ballPositions[3] *= aspectRatio;
     ballPositions[5] *= aspectRatio;
@@ -128,7 +116,7 @@ void updateBall(float batPlace) {
     }
 }
 
-void renderBall() {
+void renderBall(GLuint programId) {
     glUseProgram(programId);
     glBindVertexArray(ballVAO);
     

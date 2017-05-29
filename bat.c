@@ -1,15 +1,4 @@
-
-const float batPositions[][VERTEX_POINTS] = {
-    { -0.97f, -0.1f }    // bottom right
-    , { -0.97f, 0.1f }   // top right
-    , { -0.95f, -0.1f }  // bottom left
-    , { -0.95f, 0.1f }   // top let
-};
-
-const unsigned int batIndexes[] = {
-    0, 1, 2, 
-    1, 2, 3 
-};
+#include "bat.h"
 
 int positionBatLocation;
 GLint matrixLocation;
@@ -17,7 +6,7 @@ GLint matrixLocation;
 GLuint batVAO;
 GLint batPositionsVBO, batIndexesVBO;
 
-int initBat() {
+int initBat(GLuint programId) {
     glUseProgram(programId);    
 
     positionBatLocation = glGetAttribLocation(programId, "position");
@@ -42,7 +31,7 @@ int initBat() {
     matrixLocation = glGetUniformLocation(programId, "modelViewProjectionMatrix");
 }
 
-void drawBat(float batPlace) {
+void drawBat(GLuint programId, float batPlace) {
     glUseProgram(programId);    
     glBindVertexArray(batVAO);
     
